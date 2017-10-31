@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "210947981839",
+    "firebase_url": "https://leet-sample.firebaseio.com",
+    "project_id": "leet-sample",
+    "storage_bucket": "leet-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210947981839:android:cb20da4a798f9c3f",
+        "android_client_info": {
+          "package_name": "com.leet.leet_sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210947981839-op294k3b9nfqdr0nlrh0pi14hqsei0kh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.leet.leet_sample",
+            "certificate_hash": "d9291d3576fb26798f5cbf685cb9c35f8a30abf1"
+          }
+        },
+        {
+          "client_id": "210947981839-unsvhc1k2hd29u1uuedkbugu7s6t4bbq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6mupHf4jmwt2--cVQ1Rrln_Yxo8k33xI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210947981839-unsvhc1k2hd29u1uuedkbugu7s6t4bbq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
