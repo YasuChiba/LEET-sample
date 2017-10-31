@@ -1,4 +1,4 @@
-package com.leet.leet_sample.start.model;
+package com.leet.leet_sample.screens.start.model;
 
 import com.leet.leet_sample.utils.SharedPrefManager;
 import com.leet.leet_sample.utils.authentication.FirebaseAuthManager;
@@ -10,7 +10,7 @@ import com.leet.leet_sample.utils.authentication.FirebaseAuthManager;
 public class StartModel {
 
     public boolean isFirstLaunch() {
-        return SharedPrefManager.getInstance().isFirstLaunch();
+        return SharedPrefManager.isFirstLaunch();
     }
 
     public boolean isLoggedIn() {

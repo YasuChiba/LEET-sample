@@ -1,4 +1,4 @@
-package com.leet.leet_sample.start.view;
+package com.leet.leet_sample.screens.start.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,9 +24,6 @@ public class StartView implements StartViewInterface {
 
     }
 
-    public void setup() {
-
-    }
 
     @Override
     public View getRootView() {

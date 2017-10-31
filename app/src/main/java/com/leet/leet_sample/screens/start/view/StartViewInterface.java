@@ -1,4 +1,4 @@
-package com.leet.leet_sample.start.view;
+package com.leet.leet_sample.screens.start.view;
 
 import com.leet.leet_sample.common.ViewBaseInterface;
 

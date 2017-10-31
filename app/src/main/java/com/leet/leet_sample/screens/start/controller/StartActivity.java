@@ -1,14 +1,13 @@
-package com.leet.leet_sample.start.controller;
+package com.leet.leet_sample.screens.start.controller;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.widget.LinearLayout;
 
-import com.leet.leet_sample.R;
-import com.leet.leet_sample.start.model.StartModel;
-import com.leet.leet_sample.start.view.StartView;
+import com.leet.leet_sample.screens.login.controller.LoginActivity;
+import com.leet.leet_sample.screens.start.model.StartModel;
+import com.leet.leet_sample.screens.start.view.StartView;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -31,10 +30,13 @@ public class StartActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Log.d("aaaaa", "is first launch???   :   "+mModel.isFirstLaunch());
-        Log.d("aaaaa", "is logged in???   :   "+mModel.isLoggedIn());
+        if(mModel.isLoggedIn()) {
 
 
+        }else {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
 
