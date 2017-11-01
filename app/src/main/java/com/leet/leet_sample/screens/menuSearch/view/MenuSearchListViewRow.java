@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.leet.leet_sample.R;
+import com.leet.leet_sample.utils.database.entities.menu.MenuEntity;
 
 /**
  * TODO: document your custom view class.
@@ -54,8 +55,8 @@ public class MenuSearchListViewRow extends LinearLayout {
     }
 
 
-    public void setText(String text1, String text2) {
-        name.setText(text1);
-        name2.setText(text2);
+    public void setData(MenuEntity data) {
+        name.setText(data.getName());
+        name2.setText(data.getNutritions().getProtein());
     }
 }

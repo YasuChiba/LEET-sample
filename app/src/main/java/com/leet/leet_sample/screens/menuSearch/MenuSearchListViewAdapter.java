@@ -6,7 +6,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.leet.leet_sample.screens.menuSearch.view.MenuSearchListViewRow;
-import com.leet.leet_sample.screens.menuSearch.view.MenuSearchView;
+import com.leet.leet_sample.utils.database.entities.menu.MenuEntity;
+
+import java.util.ArrayList;
 
 /**
  * Created by YasuhiraChiba on 2017/10/31.
@@ -15,21 +17,24 @@ import com.leet.leet_sample.screens.menuSearch.view.MenuSearchView;
 public class MenuSearchListViewAdapter extends BaseAdapter {
 
     private Context context;
-    private String[] texts;
+    private ArrayList<MenuEntity> data;
 
-    public MenuSearchListViewAdapter(Context context, String[] texts) {
+    public MenuSearchListViewAdapter(Context context) {
         this.context = context;
-        this.texts = texts;
+    }
+
+    public void setData(ArrayList<MenuEntity> data) {
+        this.data = data;
     }
 
     @Override
     public int getCount() {
-        return texts.length;
+        return data.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return texts[i];
+        return data.get(i);
     }
 
     @Override
@@ -41,10 +46,10 @@ public class MenuSearchListViewAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view == null) {
             MenuSearchListViewRow row = new MenuSearchListViewRow(context);
-            row.setText("INDEX  : "+i, texts[i]);
+            row.setData(data.get(i));
             return row;
         } else {
-            ((MenuSearchListViewRow)view).setText("INDEX  : "+i, texts[i]);
+            ((MenuSearchListViewRow)view).setData(data.get(i));
             return view;
         }
     }

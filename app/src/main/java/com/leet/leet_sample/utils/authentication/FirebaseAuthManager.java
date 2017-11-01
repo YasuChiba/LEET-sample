@@ -41,7 +41,7 @@ public class FirebaseAuthManager {
         return (FirebaseAuth.getInstance().getCurrentUser() != null);
     }
 
-    public static String userId() {
+    public static String getUserId() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 

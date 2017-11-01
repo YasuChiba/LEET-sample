@@ -10,7 +10,7 @@ import com.leet.leet_sample.utils.authentication.FirebaseAuthManager;
 public class StartModel {
 
     public boolean isFirstLaunch() {
-        return SharedPrefManager.isFirstLaunch();
+        return SharedPrefManager.loadIsFirstLaunch();
     }
 
     public boolean isLoggedIn() {

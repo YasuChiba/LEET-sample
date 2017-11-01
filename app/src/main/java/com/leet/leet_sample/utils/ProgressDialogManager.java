@@ -16,13 +16,14 @@ public class ProgressDialogManager {
             progressDialog = new ProgressDialog(context);
             progressDialog.setMessage("loading");
             progressDialog.setIndeterminate(true);
+            progressDialog.show();
         }
-        progressDialog.show();
     }
 
     public static void hideProgressDialog() {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
+            progressDialog = null;
         }
     }
 }

@@ -1,9 +1,9 @@
 package com.leet.leet_sample.utils;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
+import com.leet.leet_sample.common.ContextManager;
 
 /**
  * Created by YasuhiraChiba on 2017/10/31.
@@ -16,16 +16,20 @@ public class SharedPrefManager {
     private static SharedPreferences prefs =  PreferenceManager.getDefaultSharedPreferences(ContextManager.getInstance().getApplicationContext());
     private static SharedPreferences.Editor editor = prefs.edit();
 
-    private static String keyForIsFirstLaunch = "isFirstLaunch";
+    private final static String keyForIsFirstLaunch = "isFirstLaunch";
 
     //return true and set false if first launch.
-    public static  boolean isFirstLaunch() {
+    public static  boolean loadIsFirstLaunch() {
         if(prefs.getBoolean(keyForIsFirstLaunch, true) == true) {
-            editor = prefs.edit();
-            editor.putBoolean(keyForIsFirstLaunch,false);
-            editor.apply();
+            saveIsFirstLaunch(false);
             return true;
         }
         return false;
+    }
+
+    public static void saveIsFirstLaunch(boolean val) {
+        editor = prefs.edit();
+        editor.putBoolean(keyForIsFirstLaunch,val);
+        editor.apply();
     }
 }

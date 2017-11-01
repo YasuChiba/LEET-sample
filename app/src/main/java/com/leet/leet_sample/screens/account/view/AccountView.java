@@ -21,6 +21,9 @@ public class AccountView implements AccountViewInterface, View.OnClickListener  
     private TextView tvEmail;
     private Button btLogout;
 
+    private EditText etText;
+    private Button btSetText;
+
 
     public AccountView(LayoutInflater inflater, ViewGroup container) {
         mRootView = inflater.inflate(R.layout.view_account, container, false);
@@ -31,7 +34,10 @@ public class AccountView implements AccountViewInterface, View.OnClickListener  
     private void initialize() {
         tvEmail = (TextView)mRootView.findViewById(R.id.account_tv_email);
         btLogout = (Button)mRootView.findViewById(R.id.account_bt_logout);
+        etText = (EditText) mRootView.findViewById(R.id.account_et_text);
+        btSetText = (Button)mRootView.findViewById(R.id.account_bt_settext);
         btLogout.setOnClickListener(this);
+        btSetText.setOnClickListener(this);
     }
 
     public void setText(String email) {
@@ -55,6 +61,9 @@ public class AccountView implements AccountViewInterface, View.OnClickListener  
         switch (view.getId()){
             case R.id.account_bt_logout:
                 mListner.logoutClick();
+                break;
+            case R.id.account_bt_settext:
+                mListner.setUserData(etText.getText().toString());
                 break;
         }
     }

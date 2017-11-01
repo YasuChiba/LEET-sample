@@ -10,6 +10,7 @@ public interface AccountViewInterface extends ViewBaseInterface {
 
     interface AccountViewListener {
           void logoutClick();
+          void setUserData(String text);
     }
 
     void setListener(AccountViewListener listener);

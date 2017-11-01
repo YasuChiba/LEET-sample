@@ -1,16 +1,18 @@
 package com.leet.leet_sample.screens.menuSearch.controller;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import com.leet.leet_sample.R;
+
 import com.leet.leet_sample.screens.menuSearch.model.MenuSearchModel;
 import com.leet.leet_sample.screens.menuSearch.view.MenuSearchView;
+import com.leet.leet_sample.utils.database.FirebaseDatabaseManager;
+import com.leet.leet_sample.utils.database.entities.menu.MenuEntity;
+
+import java.util.ArrayList;
 
 public class MenuSearchFragment extends Fragment {
 
@@ -24,10 +26,6 @@ public class MenuSearchFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-          //  mParam1 = getArguments().getString(ARG_PARAM1);
-           // mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -36,26 +34,15 @@ public class MenuSearchFragment extends Fragment {
 
         mModel = new MenuSearchModel();
         mView = new MenuSearchView(inflater, container);
-        String[] texts = {"A","B","C"};
-        mView.setupListView(getContext(),texts);
 
-        mModel.getMenu(null);
-
-
+        //set list of menu to listview after load from firebase
+        mModel.getMenu(new FirebaseDatabaseManager.FirebaseDBGetMenuCallback() {
+            @Override
+            public void getMenuData(ArrayList<MenuEntity> data) {
+                mView.setupListView(getContext(),data);
+            }
+        });
 
         return mView.getRootView();
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
     }
 }

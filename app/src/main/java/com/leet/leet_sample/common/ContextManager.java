@@ -1,4 +1,4 @@
-package com.leet.leet_sample.utils;
+package com.leet.leet_sample.common;
 
 import android.content.Context;
 

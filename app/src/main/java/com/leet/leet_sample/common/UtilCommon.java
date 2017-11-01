@@ -1,4 +1,4 @@
-package com.leet.leet_sample.utils;
+package com.leet.leet_sample.common;
 
 import android.app.Application;
 
@@ -6,6 +6,7 @@ import android.app.Application;
  * Created by YasuhiraChiba on 2017/10/31.
  */
 
+//Application class. this class is instanciated when the app launched
 public class UtilCommon extends Application {
 
     @Override

@@ -6,9 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.leet.leet_sample.R;
 import com.leet.leet_sample.screens.account.AccountInterface;
 import com.leet.leet_sample.screens.account.model.AccountModel;
 import com.leet.leet_sample.screens.account.view.AccountView;
@@ -47,5 +45,10 @@ public class AccountFragment extends Fragment implements AccountViewInterface.Ac
     public void logoutClick() {
         FirebaseAuthManager.logout();
         mListner.backToLogin();
+    }
+
+    @Override
+    public void setUserData(String text) {
+        mModel.setUserData(text);
     }
 }
