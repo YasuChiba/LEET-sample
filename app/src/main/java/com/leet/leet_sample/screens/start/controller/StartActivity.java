@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 
 import com.leet.leet_sample.screens.login.controller.LoginActivity;
+import com.leet.leet_sample.screens.main.controller.MainActivity;
 import com.leet.leet_sample.screens.start.model.StartModel;
 import com.leet.leet_sample.screens.start.view.StartView;
 
@@ -31,7 +32,8 @@ public class StartActivity extends AppCompatActivity {
         super.onStart();
 
         if(mModel.isLoggedIn()) {
-
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
 
         }else {
             Intent intent = new Intent(this, LoginActivity.class);

@@ -43,6 +43,6 @@ public class MainView implements MainViewInterface {
 
     @Override
     public View getRootView() {
-        return null;
+        return mRootView;
     }
 }

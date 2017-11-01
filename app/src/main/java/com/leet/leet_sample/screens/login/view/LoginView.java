@@ -62,7 +62,14 @@ public class LoginView implements LoginViewInterface, View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-
+        switch(view.getId()) {
+            case R.id.bt_login:
+                mListener.loginClick(etEmail.getText().toString(),etPassword.getText().toString());
+                break;
+            case R.id.bt_createaccount:
+                mListener.createAccountClick(etEmail.getText().toString(),etPassword.getText().toString());
+                break;
+        }
 
     }
 
