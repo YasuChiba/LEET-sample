@@ -9,7 +9,7 @@ if you want to know how to handle firebase database,
 
 
 
-baseic flow ↓
+basic flow ↓
   
  ![img_20171101_152725110](https://user-images.githubusercontent.com/21037246/32301259-7313f16a-bf1a-11e7-92f2-40442c5a6a49.jpg)
 
