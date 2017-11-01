@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.leet.leet_sample.R;
+import com.leet.leet_sample.screens.menuSearch.model.MenuSearchModel;
 import com.leet.leet_sample.screens.menuSearch.view.MenuSearchView;
 
 public class MenuSearchFragment extends Fragment {
 
     private MenuSearchView mView;
+    private MenuSearchModel mModel;
 
     public MenuSearchFragment() {
         // Required empty public constructor
@@ -32,9 +34,14 @@ public class MenuSearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        mModel = new MenuSearchModel();
         mView = new MenuSearchView(inflater, container);
         String[] texts = {"A","B","C"};
         mView.setupListView(getContext(),texts);
+
+        mModel.getMenu(null);
+
+
 
         return mView.getRootView();
     }

@@ -27,9 +27,13 @@ public class MainActivity extends AppCompatActivity implements AccountInterface 
         mModel = new MainModel();
         mView = new MainView(LayoutInflater.from(this), null);
 
+        AccountFragment accountFragment = new AccountFragment();
+        accountFragment.setupFragment(this);
+        MenuSearchFragment menuSearchFragment = new MenuSearchFragment();
         fragments = new Fragment[2];
-        fragments[0] = new MenuSearchFragment();
-        fragments[1] = new AccountFragment(this);
+        fragments[0] = menuSearchFragment;
+        fragments[1] = accountFragment;
+
         mView.setupTabs(fragments,mModel.tabTitles,getSupportFragmentManager());
 
         setContentView(mView.getRootView());
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements AccountInterface 
     @Override
     public void backToLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }

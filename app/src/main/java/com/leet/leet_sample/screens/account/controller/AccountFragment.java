@@ -25,7 +25,9 @@ public class AccountFragment extends Fragment implements AccountViewInterface.Ac
 
     private AccountInterface mListner;
 
-    public AccountFragment(AccountInterface listner) {
+    public AccountFragment() {}
+
+    public void setupFragment(AccountInterface listner) {
         this.mListner = listner;
     }
 
