@@ -6,5 +6,5 @@ package com.leet.leet_sample.screens.main.model;
 
 public class MainModel {
 
-    public String[] tabTitles = {"search"};
+    public String[] tabTitles = {"search","account"};
 }

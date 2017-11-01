@@ -44,4 +44,8 @@ public class FirebaseAuthManager {
     public static String userId() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
+
+    public static String getEmail() {
+        return FirebaseAuth.getInstance().getCurrentUser().getEmail();
+    }
 }

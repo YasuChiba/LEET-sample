@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".screens.main.controller.MainActivity" />
-        <activity android:name=".screens.login.controller.LoginActivity"></activity>
+        <activity android:name=".screens.login.controller.LoginActivity" />
     </application>
 
 </manifest>
