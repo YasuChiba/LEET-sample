@@ -7,8 +7,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.leet.leet_sample.utils.authentication.FirebaseAuthManager;
 import com.leet.leet_sample.utils.database.entities.menu.MenuEntity;
+import com.leet.leet_sample.utils.database.entities.user.UserProfileEntity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by YasuhiraChiba on 2017/10/31.
@@ -18,11 +21,16 @@ public class FirebaseDatabaseManager {
 
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
-
-    public interface FirebaseDBGetMenuCallback {
-        public void getMenuData(ArrayList<MenuEntity> data);
+    //T is generic.  google it :)
+    public interface FirebaseDBArrayCallback<T> {
+        public void getData(ArrayList<T> data);
     }
-    public static void getMenuData(final FirebaseDBGetMenuCallback callback) {
+
+    public interface FirebaseDBObjectCallback<T> {
+        public void getData(T data);
+    }
+
+    public static void getMenuData(final FirebaseDBArrayCallback callback) {
 
         mDatabase.child("menu")
                 .child("64 Degrees (Revelle College)")
@@ -37,20 +45,49 @@ public class FirebaseDatabaseManager {
                     ent.setName(snap.getKey());
                     result.add(ent);
                 }
-                callback.getMenuData(result);
+                callback.getData(result);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                callback.getMenuData(new ArrayList<MenuEntity>());
+                callback.getData(new ArrayList<MenuEntity>());
             }
         });
     }
 
-    public static void setUserData(String text) {
+    public static void getUserProfile(final FirebaseDBObjectCallback callback) {
+        mDatabase.child("userdata")
+                .child(FirebaseAuthManager.getUserId())
+                .child("userProfile")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        UserProfileEntity ent = dataSnapshot.getValue(UserProfileEntity.class);
+                        callback.getData(ent);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+    }
+
+
+    public static void setData(String text) {
         //push() generate unique id.
         mDatabase.child("userdata")
                 .child(FirebaseAuthManager.getUserId())
                 .child("datas").push().setValue(text);
+    }
+
+    public static void setUserProfile(UserProfileEntity userProfile) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("userProfile",userProfile);
+        mDatabase.child("userdata")
+                .child(FirebaseAuthManager.getUserId())
+                .updateChildren(data);
     }
 }

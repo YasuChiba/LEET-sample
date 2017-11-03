@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.leet.leet_sample.R;
+import com.leet.leet_sample.utils.database.entities.user.UserProfileEntity;
 
 /**
  * Created by YasuhiraChiba on 2017/10/31.
@@ -21,8 +22,10 @@ public class AccountView implements AccountViewInterface, View.OnClickListener  
     private TextView tvEmail;
     private Button btLogout;
 
-    private EditText etText;
-    private Button btSetText;
+    private EditText etName;
+    private EditText etGender;
+    private EditText etAge;
+    private Button btSetDataToDB;
 
 
     public AccountView(LayoutInflater inflater, ViewGroup container) {
@@ -34,10 +37,14 @@ public class AccountView implements AccountViewInterface, View.OnClickListener  
     private void initialize() {
         tvEmail = (TextView)mRootView.findViewById(R.id.account_tv_email);
         btLogout = (Button)mRootView.findViewById(R.id.account_bt_logout);
-        etText = (EditText) mRootView.findViewById(R.id.account_et_text);
-        btSetText = (Button)mRootView.findViewById(R.id.account_bt_settext);
+
+        etName = (EditText) mRootView.findViewById(R.id.account_et_name);
+        etGender = (EditText) mRootView.findViewById(R.id.account_et_gender);
+        etAge = (EditText) mRootView.findViewById(R.id.account_et_age);
+        btSetDataToDB = (Button)mRootView.findViewById(R.id.account_bt_settext);
+
         btLogout.setOnClickListener(this);
-        btSetText.setOnClickListener(this);
+        btSetDataToDB.setOnClickListener(this);
     }
 
     public void setText(String email) {
@@ -63,7 +70,11 @@ public class AccountView implements AccountViewInterface, View.OnClickListener  
                 mListner.logoutClick();
                 break;
             case R.id.account_bt_settext:
-                mListner.setUserData(etText.getText().toString());
+                UserProfileEntity tmp = new UserProfileEntity();
+                tmp.setName(etName.getText().toString());
+                tmp.setAge(Integer.valueOf(etAge.getText().toString()));
+                tmp.setGender(etGender.getText().toString());
+                mListner.setUserData(tmp);
                 break;
         }
     }

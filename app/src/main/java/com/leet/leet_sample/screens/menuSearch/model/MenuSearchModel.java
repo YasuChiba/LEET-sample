@@ -13,16 +13,17 @@ import java.util.ArrayList;
 
 public class MenuSearchModel {
 
-    public void getMenu(final FirebaseDatabaseManager.FirebaseDBGetMenuCallback callback) {
-        FirebaseDatabaseManager.getMenuData(new FirebaseDatabaseManager.FirebaseDBGetMenuCallback() {
+    public void getMenu(final FirebaseDatabaseManager.FirebaseDBArrayCallback callback) {
+        FirebaseDatabaseManager.getMenuData(new FirebaseDatabaseManager.FirebaseDBArrayCallback() {
             @Override
-            public void getMenuData(ArrayList<MenuEntity> data) {
-                for(MenuEntity tes : data) {
-                    Log.d("loadddd", "name: " + tes.getName());
-                    Log.d("loadddd", tes.getPrice());
+            public void getData(ArrayList data) {
+                for(Object tes : data) {
+                    MenuEntity tmp = (MenuEntity)tes;
+                    Log.d("loadddd", "name: " + tmp.getName());
+                    Log.d("loadddd", tmp.getPrice());
                 }
                 if(callback != null) {
-                    callback.getMenuData(data);
+                    callback.getData(data);
                 }
             }
         });

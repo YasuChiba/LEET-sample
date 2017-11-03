@@ -1,6 +1,5 @@
 package com.leet.leet_sample.screens.menuSearch.controller;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -36,9 +35,9 @@ public class MenuSearchFragment extends Fragment {
         mView = new MenuSearchView(inflater, container);
 
         //set list of menu to listview after load from firebase
-        mModel.getMenu(new FirebaseDatabaseManager.FirebaseDBGetMenuCallback() {
+        mModel.getMenu(new FirebaseDatabaseManager.FirebaseDBArrayCallback() {
             @Override
-            public void getMenuData(ArrayList<MenuEntity> data) {
+            public void getData(ArrayList data) {
                 mView.setupListView(getContext(),data);
             }
         });
